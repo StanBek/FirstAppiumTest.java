@@ -13,15 +13,19 @@ public class FirstAppiumTest {
 
     @Test
     public void test1() throws MalformedURLException, InterruptedException {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "Pixel 3");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10");
-        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
-        capabilities.setCapability(MobileCapabilityType.APP, "https://cybertek-appium.s3.amazonaws.com/etsy.apk");
-        URL url = new URL("http://localhost:4723/wd/hub");
-        driver = new AndroidDriver<MobileElement>(url, capabilities);
-        Thread.sleep(3000);
-        driver.closeApp();
+        try {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("deviceName", "Pixel 3");
+            capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+            capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10");
+            capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+            capabilities.setCapability(MobileCapabilityType.APP, "https://cybertek-appium.s3.amazonaws.com/etsy.apk");
+            URL url = new URL("http://localhost:4723/wd/hub");
+            driver = new AndroidDriver<MobileElement>(url, capabilities);
+            Thread.sleep(3000);
+            driver.closeApp();
+        } catch (Exception e) {
+
+        }
     }
 }
